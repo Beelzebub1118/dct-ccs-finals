@@ -25,7 +25,11 @@ if (!$student) {
 
 // Fetch the subjects already attached to the student
 $attachedSubjectsQuery = "
-    SELECT subjects.subject_code, subjects.subject_name, students_subjects.grade 
+    SELECT 
+        subjects.id AS subject_id, 
+        subjects.subject_code, 
+        subjects.subject_name, 
+        students_subjects.grade 
     FROM students_subjects
     INNER JOIN subjects ON students_subjects.subject_id = subjects.id
     WHERE students_subjects.student_id = ?
@@ -55,7 +59,7 @@ if (isset($_POST['attach_subjects'])) {
 
         foreach ($selectedSubjects as $subject_id) {
             $stmt = $pdo->prepare($insertQuery);
-            $stmt->execute([$student_id, $subject_id, NULL]); // Set grade as NULL by default
+            $stmt->execute([$student_id, $subject_id, 0.00]); // Assign a default grade of 0.00
         }
 
         // Redirect to refresh the page and show updated lists
@@ -158,7 +162,7 @@ if (isset($_POST['attach_subjects'])) {
                                         <?php echo $subject['grade'] ? number_format($subject['grade'], 2) : '--.--'; ?>
                                     </td>
                                     <td>
-                                        <a href="detach-subject.php?student_id=<?php echo $student_id; ?>&subject_id=<?php echo $subject['subject_id']; ?>" class="btn btn-danger btn-sm">Detach Subject</a>
+                                        <a href="dettach-subject.php?student_id=<?php echo $student_id; ?>&subject_id=<?php echo $subject['subject_id']; ?>" class="btn btn-danger btn-sm">Detach Subject</a>
                                         <a href="assign-grade.php?student_id=<?php echo $student_id; ?>&subject_id=<?php echo $subject['subject_id']; ?>" class="btn btn-success btn-sm">Assign Grade</a>
                                     </td>
                                 </tr>
