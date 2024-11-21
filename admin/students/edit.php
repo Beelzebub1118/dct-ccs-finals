@@ -39,8 +39,8 @@ if (isset($_POST['update_student'])) {
         // Set a success message in the session
         $_SESSION['success_message'] = "Student successfully updated.";
 
-        // Redirect to the dashboard
-        header("Location: ../students/register.php");
+        // Redirect to the register page
+        header("Location: register.php");
         exit;
     } else {
         $error = "All fields are required.";
@@ -62,6 +62,15 @@ if (isset($_POST['update_student'])) {
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-5">
         <h1 class="h2">Edit Student</h1>
+
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../admin/dashboard.php">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="register.php">Register Student</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Student</li>
+            </ol>
+        </nav>
 
         <!-- Display success or error messages -->
         <?php if (!empty($error)): ?>
