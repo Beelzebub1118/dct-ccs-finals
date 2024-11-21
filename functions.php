@@ -5,10 +5,10 @@ session_start();
  * Establishes and returns a connection to the MySQL database.
  */
 function getDBConnection() {
-    $host = 'localhost'; // Change this if your host is different
+    $host = 'localhost'; // Update if your host is different
     $dbname = 'dct-ccs-finals'; // Your database name
-    $username = 'root'; // Default username for local servers like XAMPP
-    $password = ''; // Default password for local servers like XAMPP
+    $username = 'root'; // Database username
+    $password = 'root'; // Database password
 
     try {
         $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
@@ -32,6 +32,14 @@ function executeQuery($query, $params = []) {
     $stmt->execute($params);
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
+
+/**
+ * Executes a database query with optional parameters.
+ * 
+ * @param string $query The SQL query to execute.
+ * @param array $params Optional parameters for prepared statements.
+ * @return array|null The result row if found, or null if no rows match.
+ */
 
 /**
  * Guard function to restrict access to authenticated users only.
