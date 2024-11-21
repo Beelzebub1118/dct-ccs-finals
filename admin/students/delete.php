@@ -34,13 +34,13 @@ if (isset($_POST['confirm_delete'])) {
     $_SESSION['success_message'] = "Student record deleted successfully.";
 
     // Redirect to the dashboard
-    header("Location: ../../admin/dashboard.php");
+    header("Location: /admin/students/register.php");
     exit;
 }
 
 // Handle cancel action
 if (isset($_POST['cancel_delete'])) {
-    header("Location: ../../admin/dashboard.php"); // Redirect back to the dashboard
+    header("Location: /admin/students/register.php"); // Redirect back to the dashboard
     exit;
 }
 ?>

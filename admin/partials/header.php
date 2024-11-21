@@ -32,8 +32,14 @@
         </ul>
 
         <div id="navbarSearch" class="navbar-search w-100 collapse">            
-            <input class="form-control w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
-        </div>
+    <input 
+        class="form-control w-100 rounded-0 border-0" 
+        type="text" 
+        id="navbarSearchInput" 
+        name="search_query" 
+        placeholder="Search" 
+        aria-label="Search">
+</div>
     </header>
 
     <div class="container-fluid">
